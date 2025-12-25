@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPopKu Nexus | 内容情报系统</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-top">
+                <span class="brand-meta">CONTENT INTELLIGENCE</span>
+                <div class="cloud-status">
+                    <span class="status-dot"></span>
+                    CLOUD SYNCED
+                </div>
+            </div>
+            <div class="header-main">
+                <div class="logo-group">
+                    <h1>
+                        <span class="accent-blue">MyPopKu</span>
+                        <span class="accent-purple">Nexus</span>
+                    </h1>
+                    <p class="tagline">策划下一代流行文化内容。捕捉灵感，定义趋势，创造价值。</p>
+                </div>
+                <button id="add-btn" class="btn-capsule">
+                    <span class="icon">+</span> 新建选题
+                </button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="filter-bar">
+                <button class="filter-pill active" data-filter="all">全部 <span id="total-count-badge"></span></button>
+                <button class="filter-pill" data-filter="high">高优先级</button>
+                <button class="filter-pill" data-filter="ongoing">进行中</button>
+            </div>
+
+            <div id="topic-grid" class="topic-grid">
+                <!-- 选题卡片将通过 JS 渲染 -->
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框：新增/编辑 (保持深色模态框结构) -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">新增选题内容</h2>
+            </div>
+            <form id="topic-form">
+                <input type="hidden" id="topic-id">
+                <div class="form-group">
+                    <label>选题名称</label>
+                    <input type="text" id="topic-title" required placeholder="例如：Jan 圣诞互动动画复刻">
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                    <input type="checkbox" id="topic-pinned" style="width: auto;">
+                    <label for="topic-pinned" style="margin-bottom: 0; cursor: pointer;">置顶此项目到 Nexus 顶端</label>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>当前状态</label>
+                        <select id="topic-status">
+                            <option value="待定">待定 (Ready)</option>
+                            <option value="策划中">策划中 (Planning)</option>
+                            <option value="制作中">制作中 (Producing)</option>
+                            <option value="已发布">已发布 (Published)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>负责人 (Nexus 成员)</label>
+                        <select id="topic-owner">
+                            <option value="Admin">Admin</option>
+                            <option value="Editor_A">Editor A</option>
+                            <option value="Designer_B">Designer B</option>
+                            <option value="Developer_C">Developer C</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>优先级等级</label>
+                        <select id="topic-priority">
+                            <option value="P0">P0 - CRITICAL (极高)</option>
+                            <option value="P1">P1 - NORMAL (正常)</option>
+                            <option value="P2">P2 - LOW (较低)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>情报来源</label>
+                        <select id="topic-source">
+                            <option value="小红书">小红书爆款</option>
+                            <option value="即刻">即刻热点</option>
+                            <option value="原创">自研策划</option>
+                            <option value="Instagram">Instagram 趋势</option>
+                            <option value="其他">其他来源</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>内容形式</label>
+                    <select id="topic-type">
+                        <option value="交互动画">互动/交互动画 (Code/Tool)</option>
+                        <option value="新年贺卡">新年/元旦交互贺卡</option>
+                        <option value="视觉特效">视觉特效复刻</option>
+                        <option value="深度教程">技术深度教程</option>
+                        <option value="日常/Vlog">日常运营/Vlog</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-capsule btn-cancel">取消</button>
+                    <button type="submit" class="btn-capsule">保存情报</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
