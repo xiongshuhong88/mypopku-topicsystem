@@ -27,6 +27,14 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     background: radial-gradient(circle at top right, #111827, #0a0a0a);
+    overflow-x: hidden;
+    /* 防止水平溢出 */
+    width: 100%;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .app-container {
@@ -151,7 +159,8 @@ body {
 /* Grid Layout */
 .topic-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* 更兼容窄屏的最小值 */
     gap: 1.5rem;
 }
 
@@ -407,80 +416,88 @@ select {
 
 @media (max-width: 768px) {
     .app-container {
-        padding: 2rem 1rem;
+        padding: 1.5rem 0.75rem;
+        /* 进一步缩小内边距 */
     }
 
     .app-header {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .header-main {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .logo-group h1 {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
+        /* 缩小 Logo */
         flex-wrap: wrap;
+        line-height: 1.2;
     }
 
     .tagline {
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
     }
 
     .btn-capsule {
         width: 100%;
         justify-content: center;
-        padding: 0.7rem 1.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
     }
 
     .filter-bar {
         overflow-x: auto;
         padding-bottom: 0.5rem;
         white-space: nowrap;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .filter-bar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .filter-pill {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.85rem;
+        gap: 0.5rem;
     }
 
     .topic-grid {
         grid-template-columns: 1fr;
+        /* 强制单列 */
         gap: 1rem;
+        width: 100%;
     }
 
     .topic-card {
+        padding: 1.5rem;
+        /* 减少卡片内边距 */
         min-height: auto;
-        padding: 2rem 1.5rem;
     }
 
     .card-title {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
     }
 
     .modal-content {
-        padding: 2rem 1.5rem;
-        border-radius: 16px;
-        max-width: 95%;
+        padding: 1.5rem;
+        border-radius: 12px;
+        width: 92%;
+        margin: 0 auto;
     }
 
     .modal-header h2 {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
     }
 
-    .pin-indicator {
-        left: 1.5rem;
+    .priority-tag {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo-group h1 {
+        font-size: 1.8rem;
+    }
+
+    .app-container {
+        padding: 1rem 0.5rem;
     }
 }
 
